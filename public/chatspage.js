@@ -259,13 +259,16 @@ videoCallBtn.addEventListener("click", () => {
   )}`;
 });
 
-// Incoming call: show popup in current page
-page.on("video-offer", ({ offer }) => {
-  pendingOffer = offer;
-  ringtone.currentTime = 0;
-  ringtone.play();
-  videoCallPopup.style.display = "flex"; // show call popup
-  statusEl.textContent = "Incoming call... 📞";
+page.on("video-offer", ({ offer, to, from }) => {
+  if (to == info1) {
+    pendingOffer = offer;
+    ringtone.currentTime = 0;
+    ringtone.play();
+    videoCallPopup.style.display = "flex";
+    statusEl.textContent = "Incoming call... 📞";
+  } else {
+    return;
+  }
 });
 
 // Accept call

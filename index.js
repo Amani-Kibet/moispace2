@@ -87,8 +87,8 @@ io.on("connection", async (socket) => {
     socket.to(room).emit("user-joined", socket.id);
   });
 
-  socket.on("video-offer", ({ room, offer }) => {
-    socket.to(room).emit("video-offer", { offer, from: socket.id });
+  socket.on("video-offer", ({ room, offer, to }) => {
+    socket.to(room).emit("video-offer", { offer, from: socket.id, to: to });
   });
 
   socket.on("video-answer", ({ room, answer }) => {

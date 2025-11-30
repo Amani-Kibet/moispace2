@@ -146,6 +146,8 @@
       let localStream = null;
       let remoteStream = null;
       let pendingOffer = null;
+      let a = JSON.parse(localStorage.getItem("mainUser"));
+      let b = JSON.parse(localStorage.getItem("chatInfo2")).username;
 
       const room = "room1";
       const statusEl = document.getElementById("statusEl");
@@ -163,6 +165,7 @@
       const ICE_CONFIG = {
         iceServers: [{ urls: "stun:stun.l.google.com:19302" }],
       };
+      const targetUser = JSON.parse(localStorage.getItem("chatInfo2")).username;
       const ringtone = new Audio("/mediafiles/ring1.mp3");
       ringtone.loop = true;
 
@@ -225,7 +228,7 @@
         localStream.getTracks().forEach((t) => pc.addTrack(t, localStream));
         const offer = await pc.createOffer();
         await pc.setLocalDescription(offer);
-        socket.emit("video-offer", { room, offer });
+        socket.emit("video-offer", { room, offer, to: targetUser });
         statusEl.textContent = "Calling… 📞";
       }
 
