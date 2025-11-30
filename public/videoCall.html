@@ -30,7 +30,7 @@
         top: 20px;
         right: 20px;
         width: 180px;
-        height: 120px;
+        height: 90px;
         border-radius: 12px;
         border: 2px solid #25d366;
         object-fit: cover;
@@ -171,8 +171,16 @@
       const callBtn = document.getElementById("callBtn");
 
       const ICE_CONFIG = {
-        iceServers: [{ urls: "stun:stun.l.google.com:19302" }],
+        iceServers: [
+          { urls: "stun:stun.l.google.com:19302" },
+          {
+            urls: "turn:global.relay.twilio.com:3478?transport=udp",
+            username: "YOUR_TWILIO_USERNAME",
+            credential: "YOUR_TWILIO_PASSWORD",
+          },
+        ],
       };
+
       const targetUser = JSON.parse(localStorage.getItem("chatInfo2")).username;
       const ringtone = new Audio("/mediafiles/ring1.mp3");
       ringtone.loop = true;
