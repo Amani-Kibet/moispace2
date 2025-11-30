@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video Call</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: Arial;
+        background: #111;
+        color: white;
+        height: 100vh;
+        overflow: hidden;
+        position: relative;
+      }
+
+      #remoteVideo {
+        width: 100%;
+        height: calc(100vh - 120px);
+        object-fit: cover;
+        background: black;
+      }
+      #localVideo {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 180px;
+        height: 120px;
+        border-radius: 12px;
+        border: 2px solid #25d366;
+        object-fit: cover;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+        z-index: 10;
+      }
+      #controls {
+        position: absolute;
+        bottom: 20px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        z-index: 10;
+      }
+      button {
+        padding: 14px 22px;
+        border: none;
+        border-radius: 50%;
+        font-size: 18px;
+        cursor: pointer;
+        color: white;
+        transition: transform 0.2s;
+      }
+      button:hover {
+        transform: scale(1.1);
+      }
+      #toggleCam {
+        background: #25d366;
+      }
+      #toggleMic {
+        background: #ffa500;
+      }
+      #hangup {
+        background: #c63636;
+      }
+      #callBtn {
+        background: #25d366;
+      }
+
+      #popup {
+        position: fixed;
+        inset: 0;
+        display: none;
+        background: rgba(0, 0, 0, 0.85);
+        align-items: center;
+        justify-content: center;
+        z-index: 20;
+      }
+      .popup-box {
+        background: #121217;
+        padding: 30px 40px;
+        border-radius: 16px;
+        text-align: center;
+        box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+      }
+      .popup-box p {
+        font-size: 1.4rem;
+        margin-bottom: 20px;
+      }
+      .popup-box button {
+        padding: 12px 24px;
+        font-size: 16px;
+        border-radius: 10px;
+        border: none;
+        cursor: pointer;
+        margin: 0 10px;
+      }
+      #acceptBtn {
+        background: #25d366;
+        color: white;
+      }
+      #declineBtn {
+        background: #c63636;
+        color: white;
+      }
+
+      #statusEl {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-size: 16px;
+        color: #aaa;
+        z-index: 10;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="statusEl">Idle</div>
+
+    <video id="remoteVideo" autoplay playsinline></video>
+    <video id="localVideo" autoplay playsinline muted></video>
+
+    <div id="controls">
+      <button id="toggleCam">🎥</button>
+      <button id="toggleMic">🎤</button>
+      <button id="hangup">📞</button>
+      <button id="callBtn">Call</button>
+    </div>
+
+    <div id="popup">
+      <div class="popup-box">
+        <p>📞 Incoming Call</p>
+        <button id="acceptBtn">Accept</button>
+        <button id="declineBtn">Decline</button>
+      </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      const socket = io();
+      let pc = null;
+      let localStream = null;
+      let remoteStream = null;
+      let pendingOffer = null;
+
+      const room = "room1";
+      const statusEl = document.getElementById("statusEl");
+      const popup = document.getElementById("popup");
+      const acceptBtn = document.getElementById("acceptBtn");
+      const declineBtn = document.getElementById("declineBtn");
+      const localVideo = document.getElementById("localVideo");
+      const remoteVideo = document.getElementById("remoteVideo");
+
+      const toggleCamBtn = document.getElementById("toggleCam");
+      const toggleMicBtn = document.getElementById("toggleMic");
+      const hangupBtn = document.getElementById("hangup");
+      const callBtn = document.getElementById("callBtn");
+
+      const ICE_CONFIG = {
+        iceServers: [{ urls: "stun:stun.l.google.com:19302" }],
+      };
+      const ringtone = new Audio("/mediafiles/ring1.mp3");
+      ringtone.loop = true;
+
+      socket.emit("join-room", room);
+
+      async function ensureLocalStream() {
+        if (!localStream) {
+          localStream = await navigator.mediaDevices.getUserMedia({
+            video: true,
+            audio: true,
+          });
+          localVideo.srcObject = localStream;
+        }
+      }
+
+      function createPeerConnection() {
+        pc = new RTCPeerConnection(ICE_CONFIG);
+        pc.ontrack = (e) => {
+          if (!remoteStream) remoteStream = new MediaStream();
+          e.streams[0].getTracks().forEach((t) => remoteStream.addTrack(t));
+          remoteVideo.srcObject = remoteStream;
+        };
+        pc.onicecandidate = (e) => {
+          if (e.candidate)
+            socket.emit("ice-candidate", { room, candidate: e.candidate });
+        };
+      }
+
+      // Buttons
+      toggleCamBtn.onclick = () => {
+        if (localStream) {
+          localStream.getVideoTracks().forEach((t) => (t.enabled = !t.enabled));
+          toggleCamBtn.style.opacity = localStream.getVideoTracks()[0].enabled
+            ? "1"
+            : "0.5";
+        }
+      };
+      toggleMicBtn.onclick = () => {
+        if (localStream) {
+          localStream.getAudioTracks().forEach((t) => (t.enabled = !t.enabled));
+          toggleMicBtn.style.opacity = localStream.getAudioTracks()[0].enabled
+            ? "1"
+            : "0.5";
+        }
+      };
+      hangupBtn.onclick = () => {
+        if (pc) pc.close();
+        pc = null;
+        if (localStream) localStream.getTracks().forEach((t) => t.stop());
+        if (remoteStream) remoteStream.getTracks().forEach((t) => t.stop());
+        statusEl.textContent = "Call ended ❌";
+        socket.emit("user-left", { room });
+      };
+      callBtn.onclick = startCall;
+
+      // --- Call Handling ---
+      async function startCall() {
+        await ensureLocalStream();
+        createPeerConnection();
+        localStream.getTracks().forEach((t) => pc.addTrack(t, localStream));
+        const offer = await pc.createOffer();
+        await pc.setLocalDescription(offer);
+        socket.emit("video-offer", { room, offer });
+        statusEl.textContent = "Calling… 📞";
+      }
+
+      socket.on("video-offer", async ({ offer }) => {
+        pendingOffer = offer;
+        ringtone.currentTime = 0;
+        ringtone.play();
+        popup.style.display = "flex";
+        statusEl.textContent = "Incoming call… 📞";
+      });
+
+      acceptBtn.onclick = async () => {
+        popup.style.display = "none";
+        ringtone.pause();
+        await ensureLocalStream();
+        createPeerConnection();
+        localStream.getTracks().forEach((t) => pc.addTrack(t, localStream));
+        await pc.setRemoteDescription(new RTCSessionDescription(pendingOffer));
+        const answer = await pc.createAnswer();
+        await pc.setLocalDescription(answer);
+        socket.emit("video-answer", { room, answer });
+        statusEl.textContent = "Connected 🎥";
+      };
+
+      declineBtn.onclick = () => {
+        popup.style.display = "none";
+        ringtone.pause();
+        socket.emit("call-declined", { room });
+        statusEl.textContent = "Declined ❌";
+      };
+
+      socket.on("video-answer", async ({ answer }) => {
+        ringtone.pause();
+        if (pc) await pc.setRemoteDescription(answer);
+        statusEl.textContent = "Connected 🎥";
+      });
+
+      socket.on("ice-candidate", async ({ candidate }) => {
+        if (candidate && pc) await pc.addIceCandidate(candidate);
+      });
+
+      socket.on("user-left", () => {
+        ringtone.pause();
+        if (pc) pc.close();
+        pc = null;
+        statusEl.textContent = "Caller left 👋";
+      });
+    </script>
+  </body>
+</html>

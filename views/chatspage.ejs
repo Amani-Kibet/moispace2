@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="rgb(7,14,14)" />
+    <title>Home Page</title>
+    <link rel="stylesheet" href="chatspage.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=arrow_back"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=send"
+    />
+  </head>
+  <body>
+    <div id="CHATS-PAGE">
+      <!--Header Starts Here-->
+      <section id="HEADER">
+        <!--Header Top Div Begins Here-->
+        <div id="HEADER-TOP-DIV">
+          <div id="HEADER-BTNS">
+            <button
+              id="CHATSH-BTN"
+              class="HEADER-BTNS"
+              onclick="window.location.href='/chats'"
+            >
+              <span class="material-symbols-outlined"> arrow_back </span>
+            </button>
+          </div>
+          <div id="APP-DETAILS">
+            <div id="HEADER-APPNAME"><h2>Moi Space</h2></div>
+          </div>
+
+          <div id="USER-DETAILS">
+            <div id="CALL-BTNS">
+              <!-- Voice Call -->
+              <button class="call-btn" id="VOICE-CALL">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    fill="currentColor"
+                    d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.1-.21 11.72 11.72 0 003.64.58 1 1 0 011 1v3.5a1 1 0 01-1 1A17 17 0 013 5a1 1 0 011-1h3.5a1 1 0 011 1c0 1.26.2 2.48.58 3.64a1 1 0 01-.21 1.1l-2.2 2.2z"
+                  />
+                </svg>
+              </button>
+              <!-- Video Call -->
+              <button class="call-btn" id="VIDEO-CALL">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    fill="currentColor"
+                    d="M17 10.5V6c0-1.1-.9-2-2-2H3c-1.1 0-2 .9-2 2v12a2 2 0 002 2h12c1.1 0 2-.9 2-2v-4.5l4 4v-11l-4 4z"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div id="HEADER-LOGO"></div>
+          </div>
+        </div>
+
+        <!--Header Middle Div Begins Here-->
+        <div id="HEADER-MIDDLE-DIV"><h3>Made for Moi University</h3></div>
+        <!--Header Bottom Div Begins Here-->
+        <div id="HEADER-BOTTOM-DIV">
+          <div id="HEADER-PROFILEPIC"></div>
+          <div id="HEADER-USERNAME"><h3 id="H-USERNAME"></h3></div>
+        </div>
+      </section>
+      <div id="videoCallPopup">
+        <div class="popup-box">
+          <p class="popup-text">📞 Incoming Video Call</p>
+          <div class="popup-buttons">
+            <button id="acceptCallBtn" class="accept-btn">Accept</button>
+            <button id="declineCallBtn" class="decline-btn">Decline</button>
+          </div>
+        </div>
+      </div>
+      <!--Main section Begins Here-->
+      <section id="mainSection">
+        <div class="CHAT-BODY" id="chatBody"></div>
+      </section>
+      <section id="BOTTOMBAR">
+        <div id="ATTACHMENT-DIV">
+          <label for="FILE-INPUT" id="FILE-ICON">📎</label>
+          <input id="FILE-INPUT" type="file" hidden />
+        </div>
+
+        <div id="MESSAGE-DIV">
+          <textarea
+            id="MESSAGE-INPUT"
+            name="MESSAGE-DIV"
+            type="text"
+            placeholder="Send a message..."
+          ></textarea>
+          <button id="SEND-BTN" type="submit">
+            <span class="material-symbols-outlined">send</span>
+          </button>
+        </div>
+      </section>
+    </div>
+    <div id="video2Page">
+      <div id="statusEl">Waiting...</div>
+
+      <video id="remoteVideo" autoplay playsinline></video>
+      <video id="localVideo" autoplay playsinline muted></video>
+
+      <div id="controls">
+        <button id="toggleCam">🎥</button>
+        <button id="toggleMic">🎤</button>
+        <button id="hangup">📞</button>
+      </div>
+
+      <!-- Incoming Call Popup -->
+      <div id="popup">
+        <div class="popup-box">
+          <p>📞 Incoming Call</p>
+          <button id="acceptBtn">Accept</button>
+          <button id="declineBtn">Decline</button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/chatspage.js"></script>
+</html>

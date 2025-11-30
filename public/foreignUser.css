@@ -1,0 +1,93 @@
+@import url("https://fonts.googleapis.com/css2?family=Kranky&family=Lora:ital,wght@0,400..700;1,400..700&family=Offside&family=Oleo+Script:wght@400;700&family=Rubik+Wet+Paint&family=Stack+Sans+Notch:wght@200..700&family=Trade+Winds&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+#endItems {
+  display: flex;
+  min-width: 40%;
+  align-items: start;
+}
+#viewers {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  align-items: start;
+  padding-left: 3px;
+  border-radius: 5%;
+  gap: 6px;
+  height: stretch;
+  border-left: solid 2px rgb(6, 170, 9);
+}
+#views {
+  font-size: 13px;
+  color: rgb(17, 149, 4);
+  text-align: start;
+  display: flex;
+  flex-direction: column;
+}
+#viewersCount {
+  color: bisque;
+}
+#followers {
+  align-items: start;
+  text-align: start;
+  font-size: 13px;
+  color: rgb(6, 170, 9);
+}
+#followersCount {
+  color: bisque;
+}
+#actionBtns {
+  width: 80px;
+  padding: 0 2px;
+  position: relative;
+  justify-self: flex-end;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.interestFollow {
+  width: stretch;
+  height: 30px;
+  margin-top: 4px;
+  background: linear-gradient(50deg, rgb(2, 93, 2), rgb(49, 2, 66));
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-family: "Arial";
+  cursor: pointer;
+  font-size: 11px;
+  color: whitesmoke;
+  border: 0 1px solid;
+  border-color: white;
+  align-self: center;
+  justify-self: end;
+  transition: all 0.3s;
+  letter-spacing: 0px;
+}
+.interestFollow a {
+  color: white;
+  text-decoration: none;
+}
+#exit {
+  width: 30px;
+  height: 30px;
+  margin: 5px 0 3px 0;
+  background-color: transparent;
+  border: none;
+  box-shadow: 0 0 10px rgb(0, 255, 0);
+  border-radius: 50%;
+  color: gray;
+  position: fixed;
+  bottom: 4px;
+  right: 46%;
+  cursor: pointer;
+  z-index: 31;
+}
+.following {
+  background: red;
+  color: white;
+}
+
+.interested {
+  background: red;
+  color: white;
+}

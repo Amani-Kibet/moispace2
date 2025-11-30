@@ -1,0 +1,12 @@
+const dirty = '<img src=x onerror=alert("Hacked!")><b>Hello</b>';
+const clean = DOMPurify.sanitize(dirty); 
+
+const div = document.createElement('div');
+div.appendChild(document.createTextNode(username));
+
+
+const username = '<script>alert("Hacked!")</script>';
+const div = document.createElement('div');
+
+// Safe: inserts as plain text, not HTML
+div.textContent = username;

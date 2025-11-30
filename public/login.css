@@ -1,0 +1,493 @@
+@import url("https://fonts.googleapis.com/css2?family=Kranky&family=Lora:ital,wght@0,400..700;1,400..700&family=Offside&family=Oleo+Script:wght@400;700&family=Rubik+Wet+Paint&family=Trade+Winds&display=swap");
+@media (min-width: 651px) {
+  body > *:not(#incompatibleText) {
+    display: none;
+  }
+}
+@media (max-width: 650px) {
+  body {
+    padding: 0px;
+    margin: 0px;
+    background-color: black;
+    box-sizing: border-box;
+  }
+  #incompatibleText {
+    display: none;
+  }
+  #SIGNUP-PAGE {
+    height: 100vh;
+    width: 100vw;
+  }
+  #TOP-WRAPPER {
+    background: url("/mediafiles/signupBackground.jpg");
+    background-size: cover;
+    border: solid 1px black;
+    background-position: center center;
+    background-repeat: no-repeat;
+    justify-content: flex-start;
+  }
+  #HEADER {
+    height: 3rem;
+    align-items: start;
+    display: flex;
+    position: static;
+    max-width: 100%;
+    top: 0;
+    padding-right: 5px;
+    place-content: space-between;
+  }
+  #HAPPNAMELOGO {
+    width: 170px;
+    padding-top: 5px;
+    height: inherit;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  #headerLogo {
+    width: 60px;
+    user-select: none;
+    height: 60px;
+  }
+  #HAPPNAME {
+    font-family: "Trade Winds";
+    font-size: 1.3rem;
+    text-align: center;
+    user-select: none;
+    line-height: 1.5rem;
+    user-select: none;
+    font-weight: 800;
+    color: rgba(42, 13, 64, 0.845);
+    text-shadow: 0 0 15px rgb(179, 11, 126);
+    width: auto;
+  }
+  #HSPACE {
+    width: auto;
+    height: inherit;
+  }
+  #HPAGELINKS {
+    flex: 0 0 150px; /* don’t grow or shrink */
+    display: flex;
+    justify-items: center;
+    padding-top: 18px;
+    gap: 5px;
+    height: inherit;
+  }
+
+  .HPAGELINKS-ITEMS {
+    text-decoration: none;
+    color: rgb(130, 29, 29);
+    font-size: 0.7rem;
+    padding-top: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 800;
+  }
+  #HEADER-TOPDIV {
+    display: flex;
+    justify-content: center;
+    color: rgb(6, 82, 6);
+    font-size: 3.4rem;
+    font-style: normal;
+    padding: 0 0 0 0px;
+    align-self: center;
+    max-width: min-content;
+    margin: 0;
+    user-select: none;
+  }
+  #TOPDIV-TEXT {
+    margin-bottom: 30px;
+  }
+  #HEADER-BOTTOMDIV {
+    display: flex;
+    text-align: center;
+    user-select: none;
+    font-style: italic;
+    font-size: 0.7rem;
+    width: 98%;
+    font-weight: lighter;
+    justify-items: center;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  }
+  #BOTTOMDIV-TEXT {
+    color: rgb(105, 9, 28);
+  }
+
+  #BOTTOM-WRAPPER {
+    background-color: black;
+    min-height: 100%;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  #FLOGO {
+    background: url("/mediafiles/moiSpaceImage.png");
+    background-size: cover;
+    width: 280px;
+    align-self: center;
+    z-index: 1;
+    justify-self: center;
+    min-height: 220px;
+  }
+  #SIGNUP-FORM {
+    background-color: rgb(0, 0, 0);
+    width: 100%;
+    display: flex;
+    align-items: start;
+    padding-top: 9px;
+    margin-bottom: 10px;
+    justify-content: center;
+    bottom: 330px;
+  }
+  #SIGNUP-FORM-WRAPPER {
+    padding: 0%;
+    padding-bottom: 10px;
+    width: 90%;
+    background: linear-gradient(rgb(35, 20, 57), rgb(0, 123, 29));
+    margin-top: 24px;
+    border-radius: 25px;
+    box-shadow: 0 0 20px rgb(144, 0, 255);
+    display: flex;
+    flex-direction: column;
+    animation: signupshadow 20s ease infinite;
+    z-index: 1;
+  }
+  @keyframes signupshadow {
+    0% {
+      border: solid 2px black;
+    }
+    25% {
+      box-shadow: 0px 0 20px rgb(0, 191, 255);
+      border: solid 2px black;
+    }
+    50% {
+      box-shadow: 0px 0 20px rgb(255, 111, 0);
+      border: solid 2px rgb(27, 12, 83);
+    }
+    75% {
+      box-shadow: 0px 0 20px rgb(255, 0, 166);
+      border: solid 2px rgb(0, 0, 0);
+    }
+    100% {
+      border: solid 2px black;
+    }
+  }
+  #SIGNUP-TEXT {
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+    user-select: none;
+    font-family: "Oleo Script";
+    letter-spacing: 2px;
+    margin-bottom: 0px;
+    font-size: 30px;
+    color: white;
+  }
+  #ERROR-TEXT {
+    color: rgb(208, 28, 28);
+    font-family: "Trebuchet MS", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    margin-bottom: 0px;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+  #INPUTS-WRAPPER {
+    background-color: rgba(50, 25, 40, 0.305);
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+    padding-left: 15px;
+    margin-bottom: 10px;
+    margin-top: 0px;
+    border: 1px solid rgb(57, 3, 65);
+    height: unset;
+    padding-bottom: 10px;
+    align-items: end;
+    gap: 15px;
+    justify-content: center;
+    padding-right: 5px;
+    align-self: center;
+    border-radius: 25px;
+    margin-bottom: 10px;
+    justify-self: flex-end;
+    margin-top: 20px;
+  }
+  .SIGNUP-INPUTS {
+    background-color: rgba(139, 207, 143, 0.489);
+    min-width: 60%;
+    outline-offset: 0px;
+    height: 26px;
+    border: none;
+    margin-top: 0px;
+    border-radius: 10px;
+    margin-bottom: 0px;
+  }
+  #usernameL {
+    border-top-left-radius: 40%;
+  }
+  #passwordL {
+    border-bottom-left-radius: 40%;
+  }
+  .SIGNUP-INPUTS:hover {
+    background-color: rgb(88, 103, 91);
+    color: rgb(228, 201, 226);
+    scale: 1.05;
+  }
+  .SIGNUP-INPUTS::placeholder {
+    color: rgb(12, 20, 104);
+  }
+  .SIGNUP-INPUTS:focus {
+    outline: none;
+    text-align: center;
+    background-color: rgb(201, 186, 186);
+    color: black;
+  }
+  .SIGNUP-INPUTS:focus::placeholder {
+    color: black;
+  }
+  .SIGNUP-INPUTS-DIVS {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: flex-end;
+    padding-right: 4px;
+    border-left: solid 2px rgb(54, 7, 78);
+    padding-left: 4px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+  .SIGNUP-INPUTS-LABELS {
+    color: white;
+    width: 100%;
+    align-self: center;
+    font-family: Tahoma, sans-serif;
+    font-style: italic;
+    font-size: small;
+    text-align: start;
+    user-select: none;
+  }
+  #SUBMIT-BTN {
+    align-self: center;
+    width: 50%;
+    font-size: 15px;
+    font-weight: light;
+    color: rgb(230, 224, 224);
+    border: none;
+    letter-spacing: 2px;
+    text-shadow: 0 0 8px black;
+    font-family: Arial, Helvetica, sans-serif;
+    background: radial-gradient(rgb(49, 8, 75), black);
+    height: 40px;
+    margin-top: 15px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    text-align: center;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    padding: 0px;
+  }
+  #SUBMIT-BTN:hover {
+    transform: scale(1.05);
+    background: rgb(19, 138, 37);
+    color: rgb(33, 5, 5);
+    border-bottom: solid 2px rgb(37, 20, 20);
+    letter-spacing: 2px;
+    font-weight: lighter;
+    transition: 1s ease-in-out;
+    font-family: Arial, Helvetica, sans-serif;
+    animation: submit 1s ease-in infinite;
+  }
+  @keyframes submit {
+    0% {
+    }
+    50% {
+      background-color: rgb(97, 176, 110);
+      transform: scale(1);
+    }
+    100% {
+    }
+  }
+
+  #BOTTOM-DIVS-RTEXTS {
+    background-color: rgb(0, 0, 0);
+    display: none;
+    gap: 30px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 36%;
+    height: 100%;
+    font-size: 15px;
+    font-weight: light;
+  }
+  #BOTTOM-DIVS-RTEXTS h4 {
+    width: 55%;
+    font-family: Calibri, Courier New, Courier, monospace;
+    color: rgb(73, 140, 233);
+    font-style: italic;
+    text-shadow: 5px -6px 15px rgb(59, 255, 10);
+    min-width: 100px;
+  }
+  @media (max-width: 390px) {
+    #HEADER-BOTTOMDIV {
+      display: flex;
+      text-align: center;
+      font-style: italic;
+      color: rgb(81, 26, 26);
+      font-size: 0.7rem;
+      width: 99%;
+      top: 8px;
+      font-weight: lighter;
+      padding-bottom: 0px;
+      font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    }
+  }
+}
+.unload {
+  display: none;
+}
+.loads {
+  display: flex;
+  align-items: center;
+  padding: 0 35px;
+  margin: 0 40px;
+  justify-content: end;
+  animation: signupshadow1 20s ease infinite;
+  border-radius: 40px;
+  transition: 1s ease;
+}
+@keyframes signupshadow1 {
+  0% {
+    border-bottom: solid 3px rgb(27, 11, 93);
+  }
+  25% {
+    border-bottom: solid 3px rgb(7, 112, 122);
+  }
+  50% {
+    border-bottom: solid 3px rgb(160, 163, 112);
+  }
+  75% {
+    border-bottom: solid 3px rgb(159, 16, 102);
+  }
+  100% {
+    border-bottom: solid 3px rgb(78, 10, 114);
+  }
+}
+#loadA {
+  width: 20px;
+  height: 30px;
+  background: none;
+  border-top-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  align-self: center;
+  border-bottom: solid 2px rgb(17, 255, 0);
+  border-bottom-style: double;
+  border-top: solid 2px rgb(17, 255, 0);
+  border-top-style: double;
+  animation: load 1.5s ease infinite;
+}
+#loadB {
+  width: 20px;
+  height: 30px;
+  background: none;
+  border-top-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  align-self: center;
+  border: none;
+  position: relative;
+  border-bottom: solid 2px rgb(17, 255, 0);
+  border-bottom-style: double;
+  border-top: solid 2px rgb(17, 255, 0);
+  border-top-style: double;
+  animation: load 1.5s ease infinite;
+}
+@keyframes load {
+  0% {
+  }
+  65% {
+    transform: rotateZ(-1080deg) scale(1);
+    border-top-right-radius: 15px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 0px;
+  }
+  100% {
+  }
+}
+.HPAGELINKS-ITEMS:hover {
+  color: rgb(55, 210, 35);
+  text-shadow: 0 0 15px black, 0 0 15px black, 0 0 15px black, 0 0 15px black;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-style: double;
+  transition: 0.4s ease-out;
+  border-top: solid 3px rgb(101, 21, 5);
+  text-align: center;
+  border-radius: 20px;
+  padding-left: 5px;
+  animation: zoom 2s ease infinite;
+}
+#HPAGELINKS:hover {
+  border: none;
+}
+@keyframes zoom {
+  0% {
+  }
+  50% {
+    padding: 4px 0;
+    color: antiquewhite;
+    border-top: solid 3px rgb(87, 5, 5);
+    text-decoration-style: none;
+  }
+  100% {
+  }
+}
+.createText {
+  color: white;
+  width: 100%;
+  text-align: center;
+  user-select: none;
+}
+.createText a {
+  color: rgb(6, 6, 164);
+}
+
+.floating-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  background: #0d0d0d;
+  display: none;
+}
+
+.floating-text {
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+  color: #0ff;
+  text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 40px #0ff;
+  animation: subtle-float 4s ease-in-out infinite alternate;
+}
+
+@keyframes subtle-float {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(0, -15px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta charset="UTF-8" />
+    <!-- Make mobile browser go fullscreen -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="theme-color" content="green" />
+    <title>Home Page</title>
+    <link rel="stylesheet" href="homepage.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+    />
+  </head>
+  <body>
+    <div id="HOME-PAGE">
+      <!--Header Starts Here-->
+      <section id="HEADER">
+        <!--Header Top Div Begins Here-->
+        <div id="HEADER-TOP-DIV">
+          <div id="APP-DETAILS">
+            <div id="HEADER-LOGO"></div>
+            <div id="HEADER-APPNAME"><h2>Moi Space</h2></div>
+          </div>
+
+          <div id="HEADER-BTNS">
+            <button
+              onclick="window.location.href='/chats'"
+              id="CHATSH-BTN"
+              class="HEADER-BTNS"
+            >
+              <span class="material-symbols-outlined" id="mat2"
+                >chat_bubble</span
+              ><%if(unread){%>
+              <div id="MSG-BADGE" class="BADGE"><%= unread%></div>
+              <%}%>
+            </button>
+            <button
+              onclick="window.location.href='/interests'"
+              id="INTERESTSH-BTN"
+              class="HEADER-BTNS"
+            >
+              <span class="material-symbols-outlined"> heart_check </span>
+            </button>
+          </div>
+
+          <div id="USER-DETAILS">
+            <div id="HEADER-USERNAME"><h3><%= user.username %></h3></div>
+            <a href="/userProfile">
+              <div id="HEADER-PROFILEPIC" <% if (user.profileLink) {%>
+                style="background: url(<%=user.profileLink%>); background-size:
+                cover;"<% }%>>
+              </div></a
+            >
+          </div>
+        </div>
+
+        <!--Header Middle Div Begins Here-->
+        <div id="HEADER-MIDDLE-DIV"><h3>Made for Moi University</h3></div>
+
+        <!--Header Bottom Div Begins Here-->
+        <div id="HEADER-BOTTOM-DIV">
+          <input
+            type="text"
+            placeholder="Search for souls..."
+            id="HOME-SEARCH"
+          />
+          <span class="material-symbols-outlined" id="searchInputBtn"
+            >search</span
+          >
+        </div>
+      </section>
+      <a href="/home"><button id="exit"></button></a>
+      <!--Main section Begins Here-->
+      <section id="mainSection">
+        <div class="MAIN-USERS">
+          <div class="MAIN-USERS-IMG">
+            <div class="openComment">⚙️</div>
+          </div>
+          <div class="MAIN-USERS-USERNAME">Amani Kibet</div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Comment Section Modal -->
+    <div id="COMMENT-MODAL" class="active">
+      <div id="COMMENT-HEADER">
+        <h3>Comments</h3>
+        <button id="CLOSE-COMMENTS">&times;</button>
+      </div>
+
+      <div id="COMMENT-BODY">
+        <div class="COMMENT-ITEM">
+          <div class="COMMENT-HEADER">
+            <span class="COMMENT-USER">user1</span>
+            <div class="COMMENT-ACTIONS">
+              <span class="COMMENT-TIME">2h ago</span>
+              <div class="COMMENT-LIKE">
+                <svg width="16" height="16" fill="red" viewBox="0 0 16 16">
+                  <path
+                    d="M8 15s-1-.5-3-2.5S1 8.5 1 5a3 3 0 0 1 6 0 3 3 0 0 1 6 0c0 3.5-4 7-6 9.5z"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="COMMENT-TEXT">Hello!</div>
+        </div>
+
+        <div class="COMMENT-ITEM">
+          <div class="COMMENT-HEADER">
+            <span class="COMMENT-USER">user2</span>
+            <div class="COMMENT-ACTIONS">
+              <span class="COMMENT-TIME">1h ago</span>
+              <div class="COMMENT-LIKE">
+                <svg width="16" height="16" fill="red" viewBox="0 0 16 16">
+                  <path
+                    d="M8 15s-1-.5-3-2.5S1 8.5 1 5a3 3 0 0 1 6 0 3 3 0 0 1 6 0c0 3.5-4 7-6 9.5z"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="COMMENT-TEXT">Nice post!</div>
+        </div>
+
+        <div class="COMMENT-ITEM">
+          <div class="COMMENT-HEADER">
+            <span class="COMMENT-USER">user3</span>
+            <div class="COMMENT-ACTIONS">
+              <span class="COMMENT-TIME">30m ago</span>
+              <div class="COMMENT-LIKE">
+                <svg width="16" height="16" fill="red" viewBox="0 0 16 16">
+                  <path
+                    d="M8 15s-1-.5-3-2.5S1 8.5 1 5a3 3 0 0 1 6 0 3 3 0 0 1 6 0c0 3.5-4 7-6 9.5z"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="COMMENT-TEXT">Amazing content!</div>
+        </div>
+
+        <div class="COMMENT-ITEM">
+          <div class="COMMENT-HEADER">
+            <span class="COMMENT-USER">user4</span>
+            <div class="COMMENT-ACTIONS">
+              <span class="COMMENT-TIME">15m ago</span>
+              <div class="COMMENT-LIKE">
+                <svg width="16" height="16" fill="red" viewBox="0 0 16 16">
+                  <path
+                    d="M8 15s-1-.5-3-2.5S1 8.5 1 5a3 3 0 0 1 6 0 3 3 0 0 1 6 0c0 3.5-4 7-6 9.5z"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="COMMENT-TEXT">Keep it up!</div>
+        </div>
+
+        <div class="COMMENT-ITEM">
+          <div class="COMMENT-HEADER">
+            <span class="COMMENT-USER">user5</span>
+            <div class="COMMENT-ACTIONS">
+              <span class="COMMENT-TIME">5m ago</span>
+              <div class="COMMENT-LIKE">
+                <svg width="16" height="16" fill="red" viewBox="0 0 16 16">
+                  <path
+                    d="M8 15s-1-.5-3-2.5S1 8.5 1 5a3 3 0 0 1 6 0 3 3 0 0 1 6 0c0 3.5-4 7-6 9.5z"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="COMMENT-TEXT">Lol 😂</div>
+        </div>
+      </div>
+
+      <div id="COMMENT-INPUT">
+        <input type="text" placeholder="Add a comment..." id="NEW-COMMENT" />
+        <button id="ADD-COMMENT">Post</button>
+      </div>
+    </div>
+  </body>
+  <script src="/homepage.js"></script>
+</html>

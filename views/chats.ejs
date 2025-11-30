@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="rgb(7, 14, 14)">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="chats.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"/>
+</head>
+<body>
+    <div id="CHATS-PAGE">
+
+        <!--Header Starts Here-->
+        <section id="HEADER">
+            <!--Header Top Div Begins Here-->
+            <div id="HEADER-TOP-DIV">
+                <div id="APP-DETAILS">
+                    <div id="HEADER-LOGO"></div>
+                    <div id="HEADER-APPNAME"><h2>Moi Space</h2></div>
+                </div>
+
+                <div id="HEADER-BTNS">
+                    <button onclick="window.location.href='/home'" id="CHATSH-BTN" class="HEADER-BTNS"><span class="material-symbols-outlined">home</span></button>
+                    <button  onclick="window.location.href='/interests'"
+                     id="INTERESTSH-BTN" class="HEADER-BTNS"><span class="material-symbols-outlined">
+heart_check
+</span></button>
+                </div>
+
+                <div id="USER-DETAILS">
+                    <div id="HEADER-USERNAME"><h3><%=user.username %></h3></div><a href="/userProfile">
+                    <div id="HEADER-PROFILEPIC"  <% if (user.profileLink) {%>style="background: url(<%=user.profileLink%>); background-size: cover;"<%
+                      
+                    }%>></div></a>
+                </div>
+            </div>
+
+            <!--Header Middle Div Begins Here-->
+            <div id="HEADER-MIDDLE-DIV"><h3>Made for Moi University</h3></div>
+
+            <!--Header Bottom Div Begins Here-->
+            <div id="HEADER-BOTTOM-DIV">
+                <h4>Campus hearts, real connections</h4>
+            </div>
+        </section>
+
+        <!--Main section Begins Here-->
+        <section id="mainSection">
+            <div id="mainSection-HEADER">
+                <input type="text" placeholder="Search contacts..." id="CONTACTS-SEARCH"><span class="material-symbols-outlined" id="searchBtn" >search</span>
+            </div>
+
+            <div id="CONTACTS-BODY">
+
+            </div>
+        </section>
+
+    </div>
+    <script  src="chats.js"></script>
+</body>
+</html>

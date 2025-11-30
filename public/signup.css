@@ -1,0 +1,360 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #000;
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+#SIGNUP-PAGE {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: radial-gradient(circle at 50% 10%, #2b0052, #000);
+}
+
+#HEADER {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 12px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+  z-index: 20;
+}
+
+#HAPPNAMELOGO {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#headerLogo {
+  width: 45px;
+  height: 45px;
+  border-radius: 8px;
+}
+
+#HAPPNAME {
+  font-size: 1.4rem;
+  color: #e3a7ff;
+  font-weight: 700;
+  text-shadow: 0 0 12px #a300ff;
+}
+
+#HPAGELINKS {
+  display: flex;
+  gap: 12px;
+}
+
+.HPAGELINKS-ITEMS {
+  color: #b7a9ff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  transition: 0.25s;
+}
+
+.HPAGELINKS-ITEMS:hover {
+  color: #17f0ff;
+  text-shadow: 0 0 10px #05edff;
+}
+
+#TOP-WRAPPER {
+  width: 100%;
+  height: 28vh;
+  margin-top: 70px;
+  background: url("/mediafiles/signupBackground.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+#TOPDIV-TEXT {
+  position: relative;
+  z-index: 2;
+  font-size: 1.8rem;
+  font-weight: 800;
+  text-shadow: 0 0 15px #a200ff;
+}
+
+#BOTTOM-WRAPPER {
+  width: 100%;
+  padding: 20px 0 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+#HEADER-BOTTOMDIV {
+  width: 85%;
+  text-align: center;
+  opacity: 0.9;
+  font-size: 0.95rem;
+}
+
+#SIGNUP-FORM-WRAPPER {
+  width: 92%;
+  max-width: 420px;
+  background: rgba(20, 20, 20, 0.7);
+  border: 1px solid rgba(123, 0, 247, 0.6);
+  border-radius: 18px;
+  padding: 25px 18px;
+  box-shadow: 0 0 25px #7e00ff;
+  animation: glow 4s infinite alternate ease-in-out;
+  animation: slideUp 0.9s ease-out forwards,
+    glow 4s infinite alternate ease-in-out;
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 6px red;
+  }
+  100% {
+    box-shadow: 0 0 10px yellow;
+  }
+}
+
+#SIGNUP-TEXT {
+  text-align: center;
+  font-size: 1.9rem;
+  margin-bottom: 10px;
+}
+
+#ERROR-TEXT {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #ff4747;
+}
+
+#INPUTS-WRAPPER {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.SIGNUP-INPUTS {
+  width: 100%;
+  padding: 13px;
+  background: #262626;
+  border: none;
+  border-radius: 12px;
+  color: #d7d7d7;
+  transition: 0.25s;
+  font-size: 0.95rem;
+}
+.SIGNUP-INPUTS::placeholder {
+  color: #888;
+  text-shadow: 0 0 6px rgba(0, 255, 234, 0.3);
+}
+
+.SIGNUP-INPUTS:focus {
+  background: #fff;
+  color: #000;
+  outline: 2px solid #00ffcc;
+  transform: scale(1.03);
+}
+
+#SUBMIT-BTN {
+  width: 90%;
+  padding: 14px;
+  border-radius: 25px;
+  font-size: 1.05rem;
+  margin-top: 5px;
+  cursor: pointer;
+  border: none;
+  background: linear-gradient(135deg, #8a00ff, #00e6ff);
+  transition: 0.35s;
+  color: #fff;
+  font-weight: 700;
+  align-self: center;
+  margin-bottom: 14px;
+}
+
+#SUBMIT-BTN:hover {
+  transform: translateY(-3px) scale(0.9);
+  background: linear-gradient(135deg, orange, rgb(165, 112, 13));
+}
+
+.createText {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.createText a {
+  color: #22ffd2;
+  font-weight: bold;
+}
+
+@media (max-width: 380px) {
+  #HAPPNAME {
+    font-size: 1.2rem;
+  }
+  #TOPDIV-TEXT {
+    font-size: 1.5rem;
+  }
+}
+#profilePreview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#profilePic {
+  opacity: 0;
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  cursor: pointer;
+}
+.profile-label {
+  text-align: center;
+  width: 100%;
+  display: block;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.neon-divider {
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #9d00ff,
+    #00eaff,
+    transparent
+  );
+  box-shadow: 0 0 12px #9d00ff;
+  margin: 5px 0 15px;
+  border-radius: 10px;
+}
+
+.profile-section {
+  margin-top: 20px;
+}
+
+.profile-pic-wrapper {
+  width: 110px;
+  height: 110px;
+  margin: 0 auto 10px;
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #8e16ff;
+  box-shadow: 0 0 2px #8e16ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.profile-pic-wrapper:hover {
+  box-shadow: 0 0 10px #00d9ff;
+  transform: scale(1.07);
+}
+
+.profile-pic-text {
+  position: absolute;
+  color: #00ffec;
+  text-shadow: 0 0 6px #00ffec, 0 0 15px #9d00ff;
+  font-weight: bold;
+  font-size: 0.9rem;
+  text-align: center;
+  pointer-events: none;
+  transition: 0.3s ease;
+}
+
+#profilePic:valid + .profile-pic-text,
+#profilePic:focus + .profile-pic-text {
+  opacity: 0;
+}
+@media (max-height: 700px) {
+  #TOP-WRAPPER {
+    height: 22vh;
+  }
+}
+@media (max-width: 390px) {
+  #headerLogo {
+    width: 36px;
+    height: 36px;
+  }
+  #HPAGELINKS {
+    gap: 6px;
+  }
+}
+@media (max-width: 360px) {
+  #SIGNUP-FORM-WRAPPER {
+    width: 95%;
+    padding: 20px 14px;
+  }
+  .SIGNUP-INPUTS {
+    padding: 11px;
+    font-size: 0.85rem;
+  }
+}
+@media (max-width: 330px) {
+  #HPAGELINKS {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+}
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(200px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#TOP-WRAPPER::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 10px;
+  left: 0;
+  background: linear-gradient(90deg, transparent, #00eaff, transparent, red);
+  animation: scanHorizontal 3s linear infinite;
+}
+
+#TOP-WRAPPER::after {
+  top: auto;
+  bottom: 0;
+  animation: scanHorizontal 3s linear infinite reverse;
+}
+
+@keyframes scanHorizontal {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0.2;
+  }
+}

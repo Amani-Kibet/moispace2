@@ -1,0 +1,680 @@
+@import url("https://fonts.googleapis.com/css2?family=Kranky&family=Lora:ital,wght@0,400..700;1,400..700&family=Offside&family=Oleo+Script:wght@400;700&family=Rubik+Wet+Paint&family=Trade+Winds&display=swap");
+body {
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+  background-color: rgb(3, 1, 1);
+  width: 100vw;
+}
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 500, "GRAD" 0, "opsz" 24;
+  color: whitesmoke;
+  background: transparent;
+  margin-top: 7px;
+  text-align: center;
+  justify-self: center;
+  align-self: center;
+}
+.material-symbols-outlined:hover {
+  scale: 1.2;
+}
+#CHATS-PAGE {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  min-height: 100%;
+  min-width: 100vw;
+  user-select: none;
+}
+#HEADER {
+  background: linear-gradient(45deg, rgb(0, 0, 0), rgb(74, 9, 61));
+  color: white;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  z-index: 100;
+  border-bottom: solid 1px salmon;
+  position: fixed;
+}
+#HEADER-TOP-DIV {
+  display: flex;
+  place-content: space-between;
+  align-items: start;
+  justify-content: start;
+  gap: 5px;
+  height: 2.8rem;
+  place-content: space-between;
+}
+#APP-DETAILS {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  height: 95%;
+  width: 12em;
+  justify-content: center;
+}
+#HEADER-LOGO {
+  background: url("/mediafiles/HeaderLogo.png");
+  width: 45px;
+  height: 45px;
+  background-size: cover;
+  padding-right: 5px;
+  background-repeat: no-repeat;
+}
+#HEADER-APPNAME {
+  font-size: 0.9rem;
+  align-self: center;
+  color: rgb(230, 139, 206);
+  font-family: "Trade Winds";
+  padding-right: 5px;
+  padding-bottom: 8px;
+  width: 150px;
+}
+#HEADER-APPNAME h2 {
+  text-align: center;
+  margin: 0px;
+  padding-top: 10px;
+}
+#HEADER-MIDDLE-DIV {
+  align-self: center;
+  justify-self: start;
+  height: 20px;
+}
+#CALL-BTNS {
+  display: flex;
+  gap: 15px;
+}
+
+.call-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: white;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+}
+
+.call-btn:hover {
+  transform: scale(1.2);
+}
+
+.call-btn svg {
+  width: 24px;
+  height: 24px;
+}
+#HEADER-MIDDLE-DIV H3 {
+  text-align: center;
+  margin-top: 0px;
+  font-family: "Oleo script";
+  font-weight: 100;
+  letter-spacing: 1px;
+  font-size: small;
+}
+#HEADER-BTNS {
+  height: inherit;
+  width: 100px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.HEADER-BTNS {
+  width: 1.5em;
+  height: 50%;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  font-size: 1.5rem;
+  background: transparent;
+  padding-bottom: 5px;
+  padding: 0px;
+  padding-left: 9px;
+}
+#USER-DETAILS {
+  display: flex;
+  flex-direction: row;
+  width: 200px;
+  gap: 10px;
+  justify-content: end;
+}
+
+#HEADER-PROFILEPIC {
+  background-color: yellowgreen;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-top: 2px;
+  margin-right: 5px;
+}
+
+#HEADER-BOTTOM-DIV {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 5px;
+  width: 100%;
+  max-height: 50px;
+  padding-left: 10px;
+  justify-content: start;
+}
+#HEADER-USERNAME {
+  font-family: "lora";
+  font-size: 0.7em;
+  font-style: italic;
+  padding-left: 10px;
+}
+#HEADER-BOTTOM-DIV h4 {
+  font-size: 0.8re m;
+  font-weight: lighter;
+}
+
+#mainSection {
+  width: 100%;
+  min-height: 80vh;
+  background-color: rgb(33, 6, 27);
+  margin-top: 70px;
+  padding-top: 20px;
+  display: block;
+  padding-bottom: 50px;
+  bottom: 0;
+}
+.CHAT-BODY {
+  padding-top: 20px;
+  width: 100%;
+  min-height: 80vh;
+  background: white url("/mediafiles/berries-8577873_1920.jpg");
+  background-attachment: fixed;
+  background-color: wheat;
+  color: rgb(0, 0, 0);
+  margin-top: auto;
+  padding-bottom: 20px;
+  overflow-y: auto;
+  display: inline-block;
+  scroll-behavior: smooth;
+}
+
+.SENDER-TEXT {
+  min-height: 20px;
+  justify-content: center;
+  justify-self: end;
+  display: flex;
+  padding-top: 4px;
+  flex-direction: column;
+  font-size: 0.8rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  padding-left: 5px;
+  line-height: 0.9rem;
+  padding-bottom: 5px;
+  text-align: end;
+  background: linear-gradient(45deg, rgb(20, 81, 13), rgb(2, 22, 3));
+  color: white;
+  border-radius: 10px;
+  border-top-right-radius: 3px;
+  margin-right: 5px;
+  margin-top: 5px;
+  padding-right: 8px;
+  display: flex;
+  flex-direction: column;
+  place-content: space-between;
+  overflow-wrap: anywhere;
+  line-height: 23px;
+  letter-spacing: 0.1px;
+  max-width: 50%;
+  min-width: 30%;
+}
+.SENDER-TEXT h3 {
+  padding: 0px;
+  margin: 0px;
+}
+.RECEPIENT-TEXT h3 {
+  padding: 0px;
+  margin: 0px;
+}
+.TIME {
+  color: rgb(142, 142, 142);
+  text-align: end;
+  font-family: "calibri";
+  font-size: smaller;
+  font-weight: bold;
+}
+.RECEPIENT-TEXT {
+  min-height: 20px;
+  justify-content: center;
+  justify-self: start;
+  display: flex;
+  padding-top: 4px;
+  flex-direction: column;
+  font-size: 0.8rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  padding-left: 5px;
+  line-height: 0.9rem;
+  padding-bottom: 5px;
+  text-align: start;
+  background: linear-gradient(45deg, rgb(36, 6, 28), rgb(78, 2, 2));
+  color: white;
+  border-radius: 10px;
+  border-top-right-radius: 3px;
+  margin-left: 5px;
+  margin-top: 5px;
+  padding-right: 8px;
+  flex-direction: column;
+  place-content: space-between;
+  overflow-wrap: anywhere;
+  line-height: 23px;
+  letter-spacing: 0.1px;
+  max-width: 50%;
+  min-width: 30%;
+}
+#BOTTOMBAR {
+  background: linear-gradient(45deg, rgb(8, 8, 82), rgb(107, 13, 13));
+  display: flex;
+  color: yellow;
+  font-size: 1rem;
+  font-weight: bold;
+  font-style: italic;
+  min-height: 40px;
+  flex-direction: row;
+  align-items: center;
+  place-content: space-between;
+  background-color: red;
+  padding-right: 10px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  position: fixed;
+  width: 100%;
+  gap: 20px;
+  bottom: 0;
+  align-items: end;
+}
+#FILE-ICON {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+#FILE-ICON:hover {
+  transform: scale(1.2);
+}
+
+#MESSAGE-DIV {
+  margin-right: 10px;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: end;
+  justify-self: flex-start;
+  gap: 15px;
+}
+#MESSAGE-INPUT {
+  min-height: 28px;
+  width: 100%;
+  border-radius: 10px;
+  border: none;
+  border: solid 1px rgb(18, 6, 6);
+  color: rgb(232, 230, 230);
+  background-color: rgb(176, 120, 15);
+  justify-self: center;
+  align-content: center;
+  padding-left: 10px;
+  overflow-y: auto;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 1px;
+  line-height: 18px;
+}
+
+#MESSAGE-INPUT:focus {
+  background: url("/mediafiles/autumn-7517221_1920.jpg");
+  background-size: cover;
+  background-color: rgb(8, 108, 10);
+  background-blend-mode: color-burn;
+  text-shadow: 0 0 12px black;
+  border: 1px solid rgb(22, 21, 21);
+  outline: none;
+  border-radius: 3px;
+}
+#MESSAGE-INPUT:focus::placeholder {
+  font-size: 0rem;
+}
+#MESSAGE-INPUT::placeholder {
+  color: rgb(21, 9, 52);
+  font-style: italic;
+  font-size: small;
+  font-family: "Lora";
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+#SEND-BTN {
+  height: 38px;
+  user-select: none;
+  border: solid 1px rgb(149, 125, 16);
+  border-left: none;
+  align-self: flex-end;
+  width: 60px;
+  align-content: center;
+  background: transparent;
+  letter-spacing: 0px;
+  font-weight: bold;
+  padding-bottom: 3px;
+  color: rgb(14, 238, 14);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: large;
+  text-shadow: 0 0 11px rgb(0, 0, 0), 0 0 11px rgb(5, 6, 27),
+    0 0 11px rgb(2, 2, 2), 0 0 11px rgb(0, 0, 0);
+  border: none;
+}
+#SEND-BTN:hover {
+  animation: sendBtn 0.5s ease;
+}
+@keyframes sendBtn {
+  0% {
+    color: black;
+  }
+  80% {
+    color: rgb(8, 255, 8);
+    scale: 0.95;
+  }
+  100% {
+    color: black;
+  }
+}
+/* Overlay for the incoming call */
+#videoCallPopup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: none; /* Show when incoming call */
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* Popup container */
+.popup-box {
+  background: #121217;
+  padding: 25px 40px;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+  animation: popupFadeIn 0.3s ease;
+  max-width: 320px;
+  width: 90%;
+}
+
+/* Text styling */
+.popup-text {
+  font-size: 1.3rem;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+/* Button container */
+.popup-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+/* Accept button */
+.accept-btn {
+  background: #25d366;
+  color: white;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.accept-btn:hover {
+  transform: scale(1.05);
+  background: #1ebe57;
+}
+
+/* Decline button */
+.decline-btn {
+  background: #c63636;
+  color: white;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.decline-btn:hover {
+  transform: scale(1.05);
+  background: #a52a2a;
+}
+
+/* Popup fade-in animation */
+@keyframes popupFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+#remoteVideo {
+  width: 100%;
+  height: calc(100vh - 120px); /* leave space for buttons */
+  object-fit: cover;
+  background: black;
+}
+
+/* --- Local Video (small top-right) --- */
+#localVideo {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 180px;
+  height: 120px;
+  border-radius: 12px;
+  border: 2px solid #25d366;
+  object-fit: cover;
+  z-index: 10;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+}
+
+/* --- Buttons container --- */
+#controls {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  z-index: 10;
+}
+
+button {
+  padding: 14px 22px;
+  border: none;
+  border-radius: 50%;
+  font-size: 18px;
+  cursor: pointer;
+  color: white;
+  transition: transform 0.2s;
+}
+button:hover {
+  transform: scale(1.1);
+}
+
+#toggleCam {
+  background: #25d366;
+}
+#toggleMic {
+  background: #ffa500;
+}
+#hangup {
+  background: #c63636;
+}
+
+/* --- Incoming Call Popup --- */
+#popup {
+  position: fixed;
+  inset: 0;
+  display: none;
+  background: rgba(0, 0, 0, 0.85);
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+}
+.popup-box {
+  background: #121217;
+  padding: 30px 40px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+}
+.popup-box p {
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+}
+.popup-box button {
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  margin: 0 10px;
+}
+#acceptBtn {
+  background: #25d366;
+  color: white;
+}
+#declineBtn {
+  background: #c63636;
+  color: white;
+}
+
+/* --- Status text --- */
+#statusEl {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 16px;
+  color: #aaa;
+  z-index: 10;
+}
+
+#video2Page {
+  display: none;
+}
+#remoteVideo {
+  width: 100%;
+  height: calc(100vh - 120px); /* leave space for buttons */
+  object-fit: cover;
+  background: black;
+}
+
+/* --- Local Video (small top-right) --- */
+#localVideo {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 180px;
+  height: 120px;
+  border-radius: 12px;
+  border: 2px solid #25d366;
+  object-fit: cover;
+  z-index: 10;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+}
+
+/* --- Buttons container --- */
+#controls {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  z-index: 10;
+}
+
+button {
+  padding: 14px 22px;
+  border: none;
+  border-radius: 50%;
+  font-size: 18px;
+  cursor: pointer;
+  color: white;
+  transition: transform 0.2s;
+}
+button:hover {
+  transform: scale(1.1);
+}
+
+#toggleCam {
+  background: #25d366;
+}
+#toggleMic {
+  background: #ffa500;
+}
+#hangup {
+  background: #c63636;
+}
+
+/* --- Incoming Call Popup --- */
+#popup {
+  position: fixed;
+  inset: 0;
+  display: none;
+  background: rgba(0, 0, 0, 0.85);
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+}
+.popup-box {
+  background: #121217;
+  padding: 30px 40px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+}
+.popup-box p {
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+}
+.popup-box button {
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  margin: 0 10px;
+}
+#acceptBtn {
+  background: #25d366;
+  color: white;
+}
+#declineBtn {
+  background: #c63636;
+  color: white;
+}
+
+/* --- Status text --- */
+#statusEl {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 16px;
+  color: #aaa;
+  z-index: 10;
+}

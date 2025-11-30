@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="theme-color" content="rgb(2, 91, 11)" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="signup.css" />
+  </head>
+
+  <body>
+    <div id="SIGNUP-PAGE">
+      <!-- HEADER -->
+      <header id="HEADER">
+        <div id="HAPPNAMELOGO">
+          <img id="headerLogo" src="/mediafiles/HeaderLogo.png" />
+          <h1 id="HAPPNAME">Moi Space</h1>
+        </div>
+
+        <nav id="HPAGELINKS">
+          <a class="HPAGELINKS-ITEMS" href="/login">Login</a>
+          <a class="HPAGELINKS-ITEMS" href="#">Contacts</a>
+          <a class="HPAGELINKS-ITEMS" href="#">Policy</a>
+          <a class="HPAGELINKS-ITEMS" href="#">About</a>
+        </nav>
+      </header>
+
+      <!-- TOP SECTION -->
+      <section id="TOP-WRAPPER">
+        <h3 id="TOPDIV-TEXT">Moi University</h3>
+      </section>
+
+      <section id="BOTTOM-WRAPPER">
+        <p id="HEADER-BOTTOMDIV">
+          Our platfom is built for social connection a place to meet new people,
+          share ideas and grow together through meaningful interactions
+        </p>
+
+        <!-- SIGNUP FORM -->
+        <form
+          id="SIGNUP-FORM"
+          action="/signup"
+          method="POST"
+          enctype="multipart/form-data"
+        >
+          <div id="SIGNUP-FORM-WRAPPER">
+            <div id="loader" class="loads">
+              <div id="loadA" class="unload"></div>
+              <h2 id="SIGNUP-TEXT">Create Account</h2>
+              <div id="loadB" class="unload"></div>
+            </div>
+
+            <h4 id="ERROR-TEXT">
+              <% errors.forEach((error)=>{%><%= error %><br /><%}) %>
+            </h4>
+
+            <div id="INPUTS-WRAPPER">
+              <div class="SIGNUP-INPUTS-DIVS">
+                <label for="usernameS" class="SIGNUP-INPUTS-LABELS"
+                  >Username</label
+                >
+                <input
+                  class="SIGNUP-INPUTS"
+                  type="text"
+                  name="usernameS"
+                  id="usernameS"
+                  placeholder="Enter username..."
+                />
+              </div>
+
+              <div class="SIGNUP-INPUTS-DIVS">
+                <label class="SIGNUP-INPUTS-LABELS">Phone (+254)</label>
+                <input
+                  class="SIGNUP-INPUTS"
+                  type="text"
+                  id="phoneS"
+                  name="phoneS"
+                  placeholder="Enter phone number..."
+                />
+              </div>
+
+              <div class="SIGNUP-INPUTS-DIVS">
+                <label class="SIGNUP-INPUTS-LABELS">Password</label>
+                <input
+                  class="SIGNUP-INPUTS"
+                  type="password"
+                  id="passwordS"
+                  name="passwordS"
+                  placeholder="Enter password..."
+                />
+              </div>
+
+              <div class="SIGNUP-INPUTS-DIVS">
+                <label class="SIGNUP-INPUTS-LABELS">Confirm Password</label>
+                <input
+                  class="SIGNUP-INPUTS"
+                  type="password"
+                  id="passwordCS"
+                  name="passwordCS"
+                  placeholder="Confirm..."
+                />
+              </div>
+
+              <div class="SIGNUP-INPUTS-DIVS profile-section">
+                <label class="SIGNUP-INPUTS-LABELS profile-label"
+                  >Profile Picture</label
+                >
+
+                <div class="neon-divider"></div>
+
+                <div class="profile-pic-wrapper">
+                  <img
+                    id="profilePreview"
+                    src="/mediafiles/defaultProfile.png"
+                    alt="Preview"
+                  />
+                  <input
+                    class="SIGNUP-INPUTS"
+                    id="profilePic"
+                    name="profilePic"
+                    type="file"
+                    accept="image/*"
+                  />
+                </div>
+              </div>
+
+              <button id="SUBMIT-BTN" type="submit">Create Account</button>
+            </div>
+
+            <span class="createText"
+              >Already have an account? <a href="/login">Login</a></span
+            >
+          </div>
+        </form>
+
+        <div class="floating-container" id="blocked" style="display: none">
+          <div class="floating-text">
+            This site was blocked by cloud-based Terminal
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      const submitBtn = document.getElementById("SUBMIT-BTN");
+      const loadA = document.getElementById("loadA");
+      const loadB = document.getElementById("loadB");
+      let blocked = document.getElementById("blocked");
+
+      const profilePicInput = document.getElementById("profilePic");
+      const preview = document.getElementById("profilePreview");
+
+      profilePicInput.addEventListener("change", () => {
+        const file = profilePicInput.files[0];
+        if (file) preview.src = URL.createObjectURL(file);
+      });
+
+      submitBtn.addEventListener("click", () => {
+        loadB.classList.remove("unload");
+        setTimeout(() => {
+          loadA.classList.remove("unload");
+        }, 3000);
+      });
+
+      fetch("/sysInfo")
+        .then((t) => t.json())
+        .then((d) => {
+          if (!d[0].appState) blocked.style.display = "flex";
+        });
+    </script>
+  </body>
+</html>
