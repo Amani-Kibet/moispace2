@@ -169,19 +169,20 @@ const chatsPage = document.getElementById("CHATS-PAGE");
 
 const ICE_CONFIG = {
   iceServers: [
-    {
-      urls: [
-        "stun:stun.l.google.com:19302",
-        "stun:stun1.l.google.com:19302",
-        "stun:stun2.l.google.com:19302",
-        "stun:stun3.l.google.com:19302",
-        "stun:stun4.l.google.com:19302",
-      ],
-    },
+    { urls: "stun:stun.l.google.com:19302" },
+    { urls: "stun:stun1.l.google.com:19302" },
+    { urls: "stun:stun2.l.google.com:19302" },
+    { urls: "stun:stun3.l.google.com:19302" },
+    { urls: "stun:stun4.l.google.com:19302" },
     {
       urls: "turn:relay1.expressturn.com:3478",
       username: "ef4KAvyJ3d2S0RIWAW",
       credential: "e7w0oE00pq7AGa7r",
+    },
+    {
+      urls: "turn:turn.anythingtorelay.com:3478",
+      username: "YOUR_USER",
+      credential: "YOUR_PASSWORD",
     },
   ],
 };
@@ -230,6 +231,7 @@ function createPeerConnection() {
   };
 
   pc.oniceconnectionstatechange = () => {
+    console.log("ICE connection state:", pc.iceConnectionState);
     if (
       pc.iceConnectionState === "disconnected" ||
       pc.iceConnectionState === "failed"
@@ -304,27 +306,6 @@ acceptCallBtn.addEventListener("click", async () => {
 
   pendingOffer = null;
   // Show the video call div in this browser
-  video2Page.style.display = "flex";
-  chatsPage.style.display = "none";
-  statusEl.textContent = "Connected 🎥";
-});
-
-// --- Accept call: create peer connection & answer ---
-acceptCallBtn.addEventListener("click", async () => {
-  videoCallPopup.style.display = "none";
-  ringtone.pause();
-  if (!pendingOffer) return;
-
-  if (!(await ensureLocalStream())) return;
-  createPeerConnection();
-  localStream.getTracks().forEach((t) => pc.addTrack(t, localStream));
-
-  await pc.setRemoteDescription(new RTCSessionDescription(pendingOffer));
-  const answer = await pc.createAnswer();
-  await pc.setLocalDescription(answer);
-  page.emit("video-answer", { room, answer });
-
-  pendingOffer = null;
   video2Page.style.display = "flex";
   chatsPage.style.display = "none";
   statusEl.textContent = "Connected 🎥";
