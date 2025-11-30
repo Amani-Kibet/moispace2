@@ -469,6 +469,9 @@ body {
     transform: scale(1);
   }
 }
+#video2Page {
+  display: none;
+}
 
 #remoteVideo {
   width: 100%;

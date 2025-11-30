@@ -249,6 +249,7 @@
         if (remoteStream) remoteStream.getTracks().forEach((t) => t.stop());
         statusEl.textContent = "Call ended ❌";
         socket.emit("user-left", { room });
+        window.location.href = "/chatspage";
       };
       callBtn.onclick = startCall;
 
