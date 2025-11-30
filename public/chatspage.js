@@ -11,7 +11,8 @@ let page = io();
 userName.innerHTML = "Rick";
 let room = "room1";
 
-let ringtone = new Audio("/mediafiles/ring1.mp3");
+let ringtone = new Audio("/mediafiles/sounds/ring1.mp3");
+
 ringtone.loop = true;
 
 page.emit("join-room", room);
@@ -150,8 +151,11 @@ txtInput.addEventListener("input", () => {
 
 let videoCallBtn = document.getElementById("VIDEO-CALL");
 let pc = null;
-let localStream = null;
-let remoteStream = null;
+localStream = null;
+remoteStream = null;
+if (localStream) localStream.getTracks().forEach((t) => t.stop());
+if (remoteStream) remoteStream.getTracks().forEach((t) => t.stop());
+
 let pendingOffer = null;
 
 const statusEl = document.getElementById("statusEl");
@@ -169,27 +173,32 @@ const chatsPage = document.getElementById("CHATS-PAGE");
 
 const ICE_CONFIG = {
   iceServers: [
-    { urls: "stun:stun.l.google.com:19302" },
-    { urls: "stun:stun1.l.google.com:19302" },
-    { urls: "stun:stun2.l.google.com:19302" },
-    { urls: "stun:stun3.l.google.com:19302" },
-    { urls: "stun:stun4.l.google.com:19302" },
+    { urls: "stun:stun.relay.metered.ca:80" },
     {
-      urls: "turn:relay1.expressturn.com:3478",
-      username: "ef4KAvyJ3d2S0RIWAW",
-      credential: "e7w0oE00pq7AGa7r",
+      urls: "turn:global.relay.metered.ca:80",
+      username: "ed8ade22a5f3311aa8b5224c",
+      credential: "ryeeze5nrrlbGFt0",
     },
     {
-      urls: "turn:turn.anythingtorelay.com:3478",
-      username: "YOUR_USER",
-      credential: "YOUR_PASSWORD",
+      urls: "turn:global.relay.metered.ca:80?transport=tcp",
+      username: "ed8ade22a5f3311aa8b5224c",
+      credential: "ryeeze5nrrlbGFt0",
+    },
+    {
+      urls: "turn:global.relay.metered.ca:443",
+      username: "ed8ade22a5f3311aa8b5224c",
+      credential: "ryeeze5nrrlbGFt0",
+    },
+    {
+      urls: "turns:global.relay.metered.ca:443?transport=tcp",
+      username: "ed8ade22a5f3311aa8b5224c",
+      credential: "ryeeze5nrrlbGFt0",
     },
   ],
 };
 
 async function ensureLocalStream() {
   try {
-    // Stop previous tracks if any
     if (localStream) {
       localStream.getTracks().forEach((t) => t.stop());
     }
@@ -268,6 +277,8 @@ hangupBtn.onclick = () => {
   localVideo.srcObject = remoteVideo.srcObject = null;
   statusEl.textContent = "Call ended ❌";
   page.emit("user-left", { room });
+  chatsPage.style.display = "flex";
+  video2Page.style.display = "none";
 };
 
 videoCallBtn.addEventListener("click", () => {
@@ -282,9 +293,10 @@ page.on("video-offer", ({ offer, to, from }) => {
     ringtone.currentTime = 0;
     ringtone.play();
     videoCallPopup.style.display = "flex";
+
+    videoCallPopup.querySelector("p").innerText = `📞 ${from} is calling...`;
+
     statusEl.textContent = "Incoming call... 📞";
-  } else {
-    return;
   }
 });
 
