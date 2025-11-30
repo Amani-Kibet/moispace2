@@ -168,7 +168,16 @@ const video2Page = document.getElementById("video2Page");
 const chatsPage = document.getElementById("CHATS-PAGE");
 
 const ICE_CONFIG = {
-  iceServers: [{ urls: "stun:stun.l.google.com:19302" }],
+  iceServers: [
+    {
+      urls: ["stun:stun.l.google.com:19302"],
+    },
+    {
+      urls: "turn:global.relay.metered.ca:80",
+      username: "openai",
+      credential: "openai",
+    },
+  ],
 };
 
 async function ensureLocalStream() {
