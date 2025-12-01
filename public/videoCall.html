@@ -20,17 +20,17 @@
       }
 
       #remoteVideo {
-        width: 100%;
+        width: 100vw;
         height: 100vh;
         object-fit: cover;
-        background: black;
+        background: rgb(22, 7, 36);
       }
       #localVideo {
         position: absolute;
         top: 20px;
         right: 20px;
         width: 180px;
-        height: 90px;
+        height: 180px;
         border-radius: 12px;
         border: 2px solid #25d366;
         object-fit: cover;
@@ -38,15 +38,15 @@
         z-index: 10;
       }
       #controls {
-        position: absolute;
-        bottom: 20px;
-        width: 100%;
+        position: fixed;
+        top: 55%;
+        right: 20px;
+        transform: translateY(-50%);
         display: flex;
-        justify-content: center;
+        flex-direction: column;
         gap: 15px;
-        flex-wrap: wrap;
         z-index: 10;
-        padding: 0 10px;
+        padding: 0;
       }
 
       #controls button {

@@ -492,13 +492,13 @@ body {
   z-index: 10;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.7);
 }
-
 #controls {
   position: absolute;
-  bottom: 15px;
-  width: 100%;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   gap: 15px;
   z-index: 10;
 }
@@ -573,8 +573,8 @@ button:hover {
 
 @media (max-width: 480px) {
   #localVideo {
-    width: 100px;
-    height: 75px;
+    width: 180px;
+    height: 180px;
     top: 8px;
     right: 8px;
   }
