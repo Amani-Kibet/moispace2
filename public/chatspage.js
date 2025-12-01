@@ -109,7 +109,7 @@ userPic.addEventListener("click", () => {
 function send() {
   txtInput.style.height = 20 + "px";
   let text = txtInput.value;
-  let time = `${new Date().getHours()}${new Date().getMinutes()}`;
+  let time = `${new Date().getHours()}:${new Date().getMinutes()}`;
   if (text === "") return;
   let bubble = document.createElement("div");
   bubble.className = "SENDER-TEXT";
